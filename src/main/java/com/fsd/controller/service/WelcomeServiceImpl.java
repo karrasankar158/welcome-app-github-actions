@@ -32,7 +32,7 @@ public class WelcomeServiceImpl {
         greetingsMap.put("status", "success");
 
         return "Greetings send successfully";
-    }
+    }    
 
     /**
      * Returns the current greetings map.
