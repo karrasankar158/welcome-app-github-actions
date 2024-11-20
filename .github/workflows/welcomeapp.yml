@@ -24,9 +24,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      # Cache Maven dependencies to speed up build times
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       # Build the application using Maven
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install --no-transfer-progress
 
       # Upload the generated JAR file as an artifact
       - name: Upload artifact for deployment job
@@ -53,4 +62,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 9494624217/welcome-app:latest
+          tags: 9494624217/welcome-app:${{ github.sha }}  # Tag with commit SHA
