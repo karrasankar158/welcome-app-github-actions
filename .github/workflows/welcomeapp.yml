@@ -53,4 +53,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 9494624217/welcome-app:latest
+          tags: 9494624217/welcome-app:${{ github.sha }}
