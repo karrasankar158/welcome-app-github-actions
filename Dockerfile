@@ -5,7 +5,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 #Copy the Application JAR
-COPY target/welcome-app-0.0.1-SNAPSHOT.jar welcome-app-0.0.1-SNAPSHOT.jar
+COPY target/*.jar welcome-app-0.0.1-SNAPSHOT.jar
 
 #Expose Application port
 EXPOSE 8080
